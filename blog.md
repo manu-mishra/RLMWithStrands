@@ -333,7 +333,7 @@ python runexperiments
 # 2. Results saved to S3 automatically
 ```
 
-### Test with Custom Context
+### Run Benchmarks
 
 ```python
 import boto3
@@ -342,14 +342,14 @@ import uuid
 
 client = boto3.client('bedrock-agentcore', region_name='us-east-1')
 
-# Start async experiment with your choice of models
+# Start async experiment
 response = client.invoke_agent_runtime(
     agentRuntimeArn="<YOUR_RUNTIME_ARN>",
     runtimeSessionId=str(uuid.uuid4()),
     payload=json.dumps({
         "experiment": "oolong",  # or "oolong-pairs", "browsecomp-1k", "codeqa"
-        "model_name": "amazon.nova-pro-v1:0",  # or anthropic.claude-4-5-sonnet-v2:0
-        "sub_model_name": "amazon.nova-micro-v1:0"  # or anthropic.claude-4-5-haiku-v1:0
+        "model_name": "amazon.nova-pro-v1:0",
+        "sub_model_name": "amazon.nova-micro-v1:0"
     }).encode(),
     qualifier="DEFAULT"
 )
@@ -362,7 +362,7 @@ response = client.invoke_agent_runtime(
 - Nova Pro + Nova Micro (default, best price-performance)
 - Claude 4.5 Sonnet + Claude 4.5 Haiku (best code generation)
 - Claude 4.5 Opus + Claude 4.5 Haiku (frontier performance)
-- GPT-OSS 120B + Nova Micro (open-source option)
+- GPT-OSS 120B + GPT-OSS 20B (open-source option)
 
 ## Future Directions
 
