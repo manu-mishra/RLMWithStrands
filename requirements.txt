@@ -1,0 +1,17 @@
+# Core dependencies
+strands-agents>=0.1.0
+bedrock-agentcore
+strands-agents-tools
+
+# AWS CDK for infrastructure
+aws-cdk-lib>=2.0.0
+constructs>=10.0.0
+
+# CLI dependencies
+boto3>=1.26.0
+requests>=2.28.0
+pyyaml>=6.0
+
+# Development dependencies
+pytest>=7.0.0
+black>=23.0.0
